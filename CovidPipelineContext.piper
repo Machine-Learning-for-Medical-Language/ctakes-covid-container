@@ -1,0 +1,22 @@
+// Commands and parameters to create a default plaintext document processing pipeline with UMLS lookup
+
+//threads=2
+
+// Load a simple token processing pipeline from another pipeline file
+add SimpleSegmentAnnotator
+add SentenceDetectorAnnotatorBIO isTraining=false classifierJarPath=/org/apache/ctakes/core/sentdetect/model.jar FeatureConfiguration=CHAR
+add TokenizerAnnotatorPTB
+
+
+// Add non-core annotators
+//add ContextDependentTokenizerAnnotator
+addDescription concurrent.ThreadSafePosTagger
+
+// Add Chunkers
+load TsChunkerSubPipe
+
+add DefaultJCasTermAnnotator LookupXml=/org/apache/ctakes/dictionary/lookup/fast/covid.xml
+
+//add ContextAnnotator
+add ConstituencyParser
+addDescription ClearNLPDependencyParserAE

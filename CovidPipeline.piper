@@ -1,0 +1,26 @@
+// Commands and parameters to create a default plaintext document processing pipeline with UMLS lookup
+
+// Load a simple token processing pipeline from another pipeline file
+load DefaultTokenizerPipeline
+
+// Add non-core annotators
+add ContextDependentTokenizerAnnotator
+addDescription POSTagger
+
+// Add Chunkers
+load TsChunkerSubPipe
+
+// load dictionary with covid lookup descriptor (covid terminology + snomed + rxnorm)
+add DefaultJCasTermAnnotator LookupXml=/org/apache/ctakes/dictionary/lookup/fast/covid.xml
+
+// Add Cleartk Entity Attribute annotators
+load AttributeCleartkSubPipe
+
+// Write Html files
+//add pretty.html.HtmlTextWriter SubDirectory=HTML
+
+//add FhirJsonFileWriter
+
+// Log run time stats and completion
+//addLast util.log.FinishedLogger
+
