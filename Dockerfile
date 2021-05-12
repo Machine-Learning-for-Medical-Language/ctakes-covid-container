@@ -10,7 +10,7 @@ RUN unzip -q apache-tomcat-9.0.21.zip
 
 ## Check out version of ctakes with best working web-rest module
 ## Then compile with maven
-RUN svn export https://svn.apache.org/repos/asf/ctakes/trunk@1889492 ctakes
+RUN svn export https://svn.apache.org/repos/asf/ctakes/trunk@1889571 ctakes
 
 WORKDIR /
 COPY covid.bsv /ctakes/resources/org/apache/ctakes/dictionary/lookup/fast/
