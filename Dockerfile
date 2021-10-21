@@ -3,7 +3,7 @@ FROM openjdk:8-alpine
 RUN apk update && apk add ca-certificates openssl wget unzip subversion maven
 RUN apk upgrade
 
-
+RUN apk add --no-cache nss
 ## Download apache-tomcat and extract:
 RUN wget -q https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.21/bin/apache-tomcat-9.0.21.zip
 RUN unzip -q apache-tomcat-9.0.21.zip
