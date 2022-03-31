@@ -17,7 +17,7 @@ load TsChunkerSubPipe
 
 add DefaultJCasTermAnnotator LookupXml=/org/apache/ctakes/dictionary/lookup/fast/covid.xml
 
-//add ContextAnnotator
+add ContextAnnotator
 //add ConstituencyParser MaxTokens=40
 //add ClearNLPDependencyParserAE MaxTokens=40
 //load RelationSubPipe.piper
