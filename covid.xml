@@ -30,7 +30,7 @@
          </properties>
       </dictionary>
       <dictionary>
-         <name>sno_rx_16abTerms</name>
+         <name>snorx_21aaTerms</name>
          <implementationName>org.apache.ctakes.dictionary.lookup2.dictionary.UmlsJdbcRareWordDictionary</implementationName>
          <properties>
    <!-- urls for hsqldb memory connections must be file types in hsql 1.8.
@@ -40,7 +40,7 @@
    for the sake of ide ease-of-use, the user should be aware of these hsql limitations.
    -->
             <property key="jdbcDriver" value="org.hsqldb.jdbcDriver"/>
-            <property key="jdbcUrl" value="jdbc:hsqldb:file:resources/org/apache/ctakes/dictionary/lookup/fast/sno_rx_16ab/sno_rx_16ab"/>
+            <property key="jdbcUrl" value="jdbc:hsqldb:file:org/apache/ctakes/dictionary/lookup/fast/snorx_2021aa/snorx_2021aa"/>
             <property key="jdbcUser" value="sa"/>
             <property key="jdbcPass" value=""/>
             <property key="rareWordTable" value="cui_terms"/>
@@ -57,11 +57,11 @@
          </properties>
       </conceptFactory>
       <conceptFactory>
-         <name>sno_rx_16abConcepts</name>
+         <name>snorx_21aaConcepts</name>
          <implementationName>org.apache.ctakes.dictionary.lookup2.concept.UmlsJdbcConceptFactory</implementationName>
          <properties>
             <property key="jdbcDriver" value="org.hsqldb.jdbcDriver"/>
-            <property key="jdbcUrl" value="jdbc:hsqldb:file:resources/org/apache/ctakes/dictionary/lookup/fast/sno_rx_16ab/sno_rx_16ab"/>
+            <property key="jdbcUrl" value="jdbc:hsqldb:file:org/apache/ctakes/dictionary/lookup/fast/snorx_2021aa/snorx_2021aa"/>
             <property key="jdbcUser" value="sa"/>
             <property key="jdbcPass" value=""/>
             <property key="tuiTable" value="tui"/>
@@ -84,9 +84,9 @@
          <conceptFactoryName>CustomCuiConcept</conceptFactoryName>
       </dictionaryConceptPair>
       <dictionaryConceptPair>
-         <name>sno_rx_16abPair</name>
-         <dictionaryName>sno_rx_16abTerms</dictionaryName>
-         <conceptFactoryName>sno_rx_16abConcepts</conceptFactoryName>
+         <name>snorx_21aaPair</name>
+         <dictionaryName>snorx_21aaTerms</dictionaryName>
+         <conceptFactoryName>snorx_21aaConcepts</conceptFactoryName>
       </dictionaryConceptPair>
    </dictionaryConceptPairs>
 

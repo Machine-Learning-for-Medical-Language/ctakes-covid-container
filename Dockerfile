@@ -10,12 +10,17 @@ RUN unzip -q apache-tomcat-9.0.21.zip
 
 ## Check out version of ctakes with best working web-rest module
 ## Then compile with maven
-RUN svn export https://svn.apache.org/repos/asf/ctakes/trunk@1889571 ctakes
+RUN svn export https://svn.apache.org/repos/asf/ctakes/trunk@1894987 ctakes
 
 WORKDIR /
 COPY covid.bsv /ctakes/resources/org/apache/ctakes/dictionary/lookup/fast/
 COPY covid.xml /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/
 COPY pom.xml /ctakes
+
+## Copy hsql dictionary descriptor into right location
+RUN wget -q -O dict.zip  https://sourceforge.net/projects/ctakesresources/files/snorx_2021aa.zip/download
+RUN mkdir -p /ctakes/resources/org/apache/ctakes/dictionary/lookup/fast/
+RUN unzip -o dict.zip -d /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/
 
 COPY CovidPipelineContext.piper /ctakes/ctakes-web-rest/src/main/resources/pipers/Default.piper
 
