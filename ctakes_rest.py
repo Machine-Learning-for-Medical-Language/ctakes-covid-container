@@ -1,8 +1,16 @@
 #!/usr/bin/env python3.6
-
+from typing import List, Dict, Tuple
 import requests
 
-def add_cuis(json, sem_type, cui_list):
+CTAKES_URL = 'http://localhost:8080/ctakes-web-rest/service/analyze'
+
+def add_cuis(json:dict, sem_type:str, cui_list: list) -> List:
+    """
+    :param json: response from CTAKES REST
+    :param sem_type: Semantic Type, for example "DiseaseDisorderMention"
+    :param cui_list: list of CUI (Note: this function changes the result passed)
+    :return: list of CUI from ctakes JSON response containing the mention type like "DiseaseDisorderMention"
+    """
     for atts in json.get(sem_type, []):
         begin = atts['begin']
         end = atts['end']
@@ -12,7 +20,11 @@ def add_cuis(json, sem_type, cui_list):
    
     return cui_list
 
-def get_cuis(json):
+def get_cuis(json) -> List:
+    """
+    :param json: response from CTAKES REST
+    :return: list of CUI for disease, signssymptoms, anotomicsites, procedures, and identifed (from covid.bsv)
+    """
     cuis = []
 
     cuis = add_cuis(json, 'DiseaseDisorderMention', cuis)
@@ -24,12 +36,21 @@ def get_cuis(json):
 
     return cuis
 
-def process_sentence(sent):
+def process_sentence(sent, url=CTAKES_URL) -> List:
+    """
+    :param sent: sentence of clinical text to send to cTAKES
+    :param url: CATKES default http://localhost:8080/ctakes-web-rest/service/analyze
+    :return: list of CUIs
+    """
     url = 'http://localhost:8080/ctakes-web-rest/service/analyze'
     r = requests.post(url, data=sent)
     return get_cuis(r.json())
 
-def get_cui_maps(sent):
+def get_cui_maps(sent) -> Tuple:
+    """
+    :param sent: sentence of clinical text to send to cTAKES
+    :return: two dictionaries as Tuple, containing "start" and "end" maps of CUI
+    """
     cuis = process_sentence(sent)
     cui_start_map = {}
     cui_end_map = {}
@@ -58,7 +79,11 @@ def get_cui_maps(sent):
 
     return cui_start_map, cui_end_map
 
-def get_mixed_sent(sent):
+def get_mixed_sent(sent:str) -> str:
+    """
+    :param sent: sentence of clinical text to send to cTAKES
+    :return: CUI list, reversed order (???)
+    """
     import numpy as np
     # get cuis for this entity:
     _, cui_end_map = get_cui_maps(sent)
