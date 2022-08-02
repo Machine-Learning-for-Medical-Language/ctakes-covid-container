@@ -2,7 +2,7 @@ import os, logging
 import unittest
 import requests
 from enum import Enum
-from typing import List, Dict
+from typing import List
 
 COVID_BSV = os.path.join(os.pardir, 'covid.bsv')
 COVID_SYMPTOMS_BSV = os.path.join(os.getcwd(), 'covid_symptoms.bsv')
@@ -68,7 +68,7 @@ def parse_response_bsv(response:dict, sem_type:SemType)-> List[BSV]:
             bsv_res.append(BSV(concept['code'], concept['cui'], atts['text']))
     return bsv_res
 
-class TestSimpleExtractCUI(unittest.TestCase):
+class TestIdentifiedAnnotation(unittest.TestCase):
 
     def test_bsv_entries_exist_in_response(self):
 
