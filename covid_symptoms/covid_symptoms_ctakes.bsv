@@ -1,13 +1,21 @@
-#CUI|TUI|STR|PREF
+##  Columns = CUI|TUI|STR|PREF
+##      CUI = Concept Unique Identifier
+##      TUI = Type Unique Identifier
+##     CODE = Vocabulary Code
+##      SAB = Vocabulary Source Abbreviation (SNOMEDCT_US)
+##      STR = String text in physician note (case insensitive)
+##     PREF = Preferred output concept label
 
+##  Congestion or runny nose
 C0027424|T184|nasal congestion|Congestion or runny nose
 C0027424|T184|R09.81|Congestion or runny nose
 C0027424|T184|478.19|Congestion or runny nose
 C1260880|T184|rhinorrhea|Congestion or runny nose
 C1260880|T184|discharge from nose|Congestion or runny nose
-C1260880|T184|snuffles|Congestion or runny nose
+#   C1260880|T184|snuffles|Congestion or runny nose
 C1260880|T184|runny Nose|Congestion or runny nose
 
+##  Cough
 C0010200|T184|coughing|Cough
 C0010200|T184|tussive|Cough
 C0010200|T184|posttussive|Cough
@@ -18,14 +26,16 @@ C0010200|T184|786.2|Cough
 C0850149|T184|dry cough|Cough
 C0239134|T033|productive cough|Cough
 
+##  Diarrhea
 C0011991|T184|diarrhea|Diarrhea
 C0011991|T184|R19.7|Diarrhea
 C0011991|T184|787.91|Diarrhea
 C0011991|T184|Watery stool|Diarrhea
 C0011991|T184|Watery stools|Diarrhea
-C0011991|T184|loose bowel|Diarrhea
-C0011991|T184|loose bowels|Diarrhea
+#   C0011991|T184|loose bowel|Diarrhea
+#   C0011991|T184|loose bowels|Diarrhea
 
+##  Fatigue
 C0015672|T184|fatigue|Fatigue
 C0015672|T184|fatigues|Fatigue
 C0015672|T184|tiredness|Fatigue
@@ -38,15 +48,15 @@ C0231218|T184|Malaise|Fatigue
 C0231218|T184|R53.81|Fatigue
 C0231218|T184|780.79|Fatigue
 
+##  Fever or chills
 C0085593|T184|Chills|Fever or chills
-C0085593|T184|Chilly|Fever or chills
+#   C0085593|T184|Chilly|Fever or chills
 C0085593|T184|R68.83|Fever or chills
 C0085593|T184|780.64|Fever or chills
-
-C0036973|T033|Shivering|Fever or chills
-C0036973|T033|Shivers|Fever or chills
-C0687681|T184|Feeling feverish|Fever or chills
-C0687681|T184|feverish|Fever or chills
+#   C0036973|T033|Shivering|Fever or chills
+#   C0036973|T033|Shivers|Fever or chills
+#   C0687681|T184|Feeling feverish|Fever or chills
+#   C0687681|T184|feverish|Fever or chills
 C1959900|T033|Fever greater than 100.4 Fahrenheit|Fever or chills
 C0015967|T184|Fever|Fever or chills
 C0085594|T184|Fever with chills|Fever or chills
@@ -55,6 +65,7 @@ C0085594|T184|R50.0|Fever or chills
 C0085594|T184|R50.9|Fever or chills
 C0085594|T184|780.60|Fever or chills
 
+##  Headache
 C0018681|T184|Headache|Headache
 C0018681|T184|HA|Headache
 C0018681|T184|Headaches|Headache
@@ -65,6 +76,7 @@ C0018681|T184|R51|Headache
 C0018681|T184|R51.9|Headache
 C0018681|T184|784.0|Headache
 
+##  Muscle or body aches
 C0231528|T184|myalgia|Muscle or body aches
 C0231528|T184|muscle pain|Muscle or body aches
 C0231528|T184|muscle pains|Muscle or body aches
@@ -72,7 +84,6 @@ C0231528|T184|muscle soreness|Muscle or body aches
 C0231528|T184|aching muscles|Muscle or body aches
 C0231528|T184|M79.1|Muscle or body aches
 C0231528|T184|729.1|Muscle or body aches
-
 C0281856|T184|generalized aches and pains|Muscle or body aches
 C0281856|T184|generalized body aches|Muscle or body aches
 C0281856|T184|body aches|Muscle or body aches
@@ -84,9 +95,10 @@ C0281856|T184|generalized aching|Muscle or body ache
 C0281856|T184|generalized body pain|Muscle or body ache
 C0281856|T184|pain generalized|Muscle or body ache
 C0281856|T184|body pain|Muscle or body ache
-C0281856|T184|R52|Muscle or body ache
+#   C0281856|T184|R52|Muscle or body ache
 C0281856|T184|780.96|Muscle or body ache
 
+##   Nausea or vomiting
 C0027497|T184|Nausea|Nausea or vomiting
 C0027497|T184|nauseated|Nausea or vomiting
 C0027497|T184|nauseating|Nausea or vomiting
@@ -94,15 +106,14 @@ C0027497|T184|nauseous|Nausea or vomiting
 C0027497|T184|queasy|Nausea or vomiting
 C0027497|T184|R11.0|Nausea or vomiting
 C0027497|T184|787.02|Nausea or vomiting
-
 C0042963|T184|Vomiting|Nausea or vomiting
-C0042963|T184|vomit|
-C0042963|T184|vomited|
-C0042963|T184|throwing up|
-C0042963|T184|throw up|
-C0042963|T184|threw up|
-#C0042963|T184|regurgitation|
-#C0042963|T184|regurgitated|Nausea or vomiting
+C0042963|T184|vomit|Nausea or vomiting
+C0042963|T184|vomited|Nausea or vomiting
+C0042963|T184|throwing up|Nausea or vomiting
+C0042963|T184|throw up|Nausea or vomiting
+C0042963|T184|threw up|Nausea or vomiting
+#   C0042963|T184|regurgitation|Nausea or vomiting
+#   C0042963|T184|regurgitated|Nausea or vomiting
 C0042963|T184|R11|Nausea or vomiting
 C0042963|T184|R11.1|Nausea or vomiting
 C0042963|T184|R11.10|Nausea or vomiting
@@ -110,10 +121,21 @@ C0042963|T184|787.03|Nausea or vomiting
 C0042963|T184|536.2|Nausea or vomiting
 C0027498|T184|Nausea and vomiting|Nausea or vomiting
 
+##  Anosmia
 C0003126|T033|Anosmia|Anosmia
 C0003126|T033|R43|Anosmia
 C0003126|T033|R43.0|Anosmia
+C0003126|T033|Loss of smell|Anosmia
+C0003126|T033|Loss of the sense of smell|Anosmia
+C1332239|T184|Alterations in Smell or Taste|Anosmia
+C1332239|T184|Loss of taste|Anosmia
+C1332239|T184|Loss of the sense of taste|Anosmia
+C1332239|T184|Loss the sense of taste|Anosmia
+C1332239|T184|Lost sense of taste|Anosmia
+C1332239|T184|Lost taste|Anosmia
+C1332239|T184|Taste lost|Anosmia
 
+##  Dyspnea
 C0013404|T184|Dyspnea|Dyspnea
 C0013404|T184|SOB|Dyspnea
 C0013404|T184|shortness of breath|Dyspnea
@@ -122,10 +144,11 @@ C0013404|T184|short breathes|Dyspnea
 C0013404|T184|breathing difficulty|Dyspnea
 C0013404|T184|difficulty breathing|Dyspnea
 C0013404|T184|breathlessness|Dyspnea
-C0013404|T184|R06|Dyspnea
+#   C0013404|T184|R06|Dyspnea
 C0013404|T184|R06.0|Dyspnea
 C0013404|T184|786.05|Dyspnea
 
+##  Sore throat
 C0242429|T184|Sore throat|Sore throat
 C0242429|T184|Throat soreness|Sore throat
 C0242429|T184|Pharyngitis|Sore throat
