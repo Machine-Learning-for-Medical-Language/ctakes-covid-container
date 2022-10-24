@@ -4,8 +4,8 @@ import requests
 from enum import Enum
 from typing import List
 
-COVID_BSV = os.path.join(os.pardir, 'covid.bsv')
-COVID_SYMPTOMS_BSV = os.path.join(os.getcwd(), 'covid_symptoms.bsv')
+COVID_BSV = os.path.join(os.pardir, 'covid_symptoms', 'covid.bsv')
+COVID_SYMPTOMS_BSV = os.path.join(os.getcwd(), 'covid_symptoms', 'covid_symptoms_ctakes.bsv')
 
 class SemType(Enum):
     DiseaseDisorder = 'DiseaseDisorderMention'
@@ -44,7 +44,7 @@ def get_url_ctakes() -> str:
     """
     :return: CTAKES_URL_REST env variable or default using localhost
     """
-    return os.environ.get('CTAKES_URL_REST', 'http://localhost:8080/ctakes-web-rest/service/analyze')
+    return os.environ.get('CTAKES_URL_REST', 'http://localhost:8084/ctakes-web-rest/service/analyze')
 
 def call_ctakes(sentence:str, url=get_url_ctakes()) -> dict:
     """

@@ -1,4 +1,8 @@
 FROM openjdk:8-alpine
+
+ENV HTTP_PROXY="http://10.41.13.6:3128"
+ENV HTTPS_PROXY="http://10.41.13.6:3128"
+ENV FTP_PROXY="http://10.41.13.6:3128"
   
 RUN apk update && apk add ca-certificates openssl wget unzip subversion maven
 RUN apk upgrade
