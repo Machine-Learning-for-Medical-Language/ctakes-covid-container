@@ -16,13 +16,13 @@ RUN svn export https://svn.apache.org/repos/asf/ctakes/trunk@1894987 ctakes
 WORKDIR /tmp
 ## Copy hsql dictionary descriptor into right location
 RUN wget -q -O dict.zip  https://sourceforge.net/projects/ctakesresources/files/snorx_2021aa.zip/download
-RUN mkdir -p /ctakes/resources/org/apache/ctakes/dictionary/lookup/fast/
+RUN mkdir -p /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/
 RUN unzip -o dict.zip -d /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/
 
 COPY CovidPipelineContext.piper /ctakes/ctakes-web-rest/src/main/resources/pipers/Default.piper
 
 # Copy in latest dictionary info
-COPY covid_symptoms_ctakes.bsv /ctakes/resources/org/apache/ctakes/dictionary/lookup/fast/covid.bsv
+COPY covid_symptoms_ctakes.bsv /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/covid.bsv
 COPY covid_symptoms.xml /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/
 COPY pom.xml /ctakes
 
