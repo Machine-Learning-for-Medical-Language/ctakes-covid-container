@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Originally based off Gary van der Merwe's code on StackOverflow:
+# https://stackoverflow.com/questions/12264238/restart-process-on-file-change-in-linux
+# License is CC-BY-SA 3.0
+#
+# Modifications:
+# 1. Argument handling (vs just watching pwd)
+# 2. Fixed sigint_handler to use INT not SIGINT
+# 3. Use -q
+# 4. Use -KILL
+
+TARGET="$1"
+shift
+
+sigint_handler()
+{
+  kill -KILL $PID
+  exit
+}
+
+trap sigint_handler INT
+
+while true; do
+  $@ &
+  PID=$!
+  inotifywait -q -e modify -e move -e create -e delete -e attrib -r "$TARGET"
+  # We use -KILL (rather than default -TERM) to ensure there is no race condition between when
+  # tomcat severs existing connections and a window where it might accept new ones.
+  # If a connected client sees us disconnect from dying, and then we accept new connections, it
+  # will know the new connection is from the restarted instance.
+  kill -KILL $PID
+done

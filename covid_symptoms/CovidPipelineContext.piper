@@ -15,6 +15,6 @@ addDescription concurrent.ThreadSafePosTagger
 // Add Chunkers
 load TsChunkerSubPipe
 
-add DefaultJCasTermAnnotator LookupXml=/org/apache/ctakes/dictionary/lookup/fast/covid_symptoms.xml
+add DefaultJCasTermAnnotator LookupXml=/org/apache/ctakes/dictionary/lookup/fast/symptoms.xml
 
 add ContextAnnotator

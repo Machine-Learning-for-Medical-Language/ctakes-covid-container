@@ -26,7 +26,7 @@
          <name>CustomCuiRareWord</name>
          <implementationName>org.apache.ctakes.dictionary.lookup2.dictionary.BsvRareWordDictionary</implementationName>
          <properties>
-            <property key="bsvPath" value="org/apache/ctakes/dictionary/lookup/fast/covid.bsv"/>
+            <property key="bsvPath" value="org/apache/ctakes/dictionary/lookup/fast/symptoms.bsv"/>
          </properties>
       </dictionary>
       <dictionary>
@@ -53,7 +53,7 @@
          <name>CustomCuiConcept</name>
          <implementationName>org.apache.ctakes.dictionary.lookup2.concept.BsvConceptFactory</implementationName>
          <properties>
-            <property key="bsvPath" value="org/apache/ctakes/dictionary/lookup/fast/covid.bsv"/>
+            <property key="bsvPath" value="org/apache/ctakes/dictionary/lookup/fast/symptoms.bsv"/>
          </properties>
       </conceptFactory>
       <conceptFactory>
