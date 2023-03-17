@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+    <!--
+     Allow overriding the default shipped config for cTAKES.
+
+     The intended flow is to directly mount a file as "/overrides/symptoms.bsv",
+     or instead mount a whole directory as "/overrides".
+     A docker mount like: type=bind,src=./custom.bsv,dst=/overrides/symptoms.bsv,ro
+
+     More allowed overrides might happen in the future, but this is what we support today.
+
+     I tried adding a WatchedResource for this file, to avoid having to restart the container.
+     But something about cTAKES really did not like that, and it kept crashing upon restart.
+     Instead, we use a script (restart-on-change) to watch the file for us.
+
+     See https://tomcat.apache.org/tomcat-9.0-doc/config/resources.html for how the config works.
+    -->
+    <Resources>
+        <PreResources base="/overrides"
+                      className="org.apache.catalina.webresources.DirResourceSet"
+                      readOnly="true"
+                      webAppMount="/WEB-INF/classes/org/apache/ctakes/dictionary/lookup/fast" />
+    </Resources>
+
+    <!-- Below this line is the original, default tomcat9 context.xml settings -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+</Context>

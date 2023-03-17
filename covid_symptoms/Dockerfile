@@ -19,8 +19,8 @@ RUN unzip -o dict.zip -d /ctakes/ctakes-web-rest/src/main/resources/org/apache/c
 COPY CovidPipelineContext.piper /ctakes/ctakes-web-rest/src/main/resources/pipers/Default.piper
 
 # Copy in latest dictionary info
-COPY covid_symptoms_ctakes.bsv /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/covid.bsv
-COPY covid_symptoms.xml /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/
+COPY covid_symptoms_ctakes.bsv /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/symptoms.bsv
+COPY covid_symptoms.xml /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/symptoms.xml
 COPY pom.xml /ctakes
 
 # recompile, hopefully this part takes less time
@@ -36,5 +36,12 @@ RUN mvn install -pl '!ctakes-distribution' -DskipTests
 
 FROM tomcat:9.0-jre8-temurin
 COPY --from=java_build /ctakes/ctakes-web-rest/target/ctakes-web-rest.war $CATALINA_HOME/webapps/
+
+# Install a custom <Context> and some tooling to support overriding symptoms.bsv on the fly
+COPY tomcat-context.xml $CATALINA_HOME/conf/context.xml
+COPY restart-on-change /bin
+RUN mkdir /overrides
+RUN apt-get update && apt-get install -y inotify-tools
+
 ENV CTAKES_HOME=/ctakes
-CMD ["catalina.sh", "run"]
+CMD ["restart-on-change", "/overrides", "catalina.sh", "run"]
