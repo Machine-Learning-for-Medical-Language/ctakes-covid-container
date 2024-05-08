@@ -30,4 +30,8 @@ while true; do
   # If a connected client sees us disconnect from dying, and then we accept new connections, it
   # will know the new connection is from the restarted instance.
   kill -KILL $PID
+  # Wait for port to become available again
+  while curl -sI localhost:8080 >/dev/null; do
+    sleep 1
+  done
 done
