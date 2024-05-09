@@ -18,7 +18,7 @@ docker buildx build \
 
 Once you've tested the image, you can copy the tag of this release to the coarser grained tags with the following commands:
 ```bash
-docker tag martonfhir/ctakes-covid:$MAJOR.$MINOR.$PATCH smartonfhir/ctakes-covid:$MAJOR.$MINOR
-docker tag martonfhir/ctakes-covid:$MAJOR.$MINOR.$PATCH smartonfhir/ctakes-covid:$MAJOR
-docker tag martonfhir/ctakes-covid:$MAJOR.$MINOR.$PATCH smartonfhir/ctakes-covid:latest
+docker buildx imagetools create -t smartonfhir/ctakes-covid:$MAJOR.$MINOR smartonfhir/ctakes-covid:$MAJOR.$MINOR.$PATCH
+docker buildx imagetools create -t smartonfhir/ctakes-covid:$MAJOR smartonfhir/ctakes-covid:$MAJOR.$MINOR.$PATCH
+docker buildx imagetools create -t smartonfhir/ctakes-covid:latest smartonfhir/ctakes-covid:$MAJOR.$MINOR.$PATCH
 ```
